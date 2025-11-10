@@ -27,7 +27,7 @@ function addProductToCart(item) {
 }
 
 async function addToCartHandler(e) {
-  console.log('Add to Cart button clicked', e);
+  console.log("Add to Cart button clicked", e);
   e?.preventDefault?.();
   const id = e?.target?.dataset?.id;
   console.log("Product ID to add to cart:", id);
