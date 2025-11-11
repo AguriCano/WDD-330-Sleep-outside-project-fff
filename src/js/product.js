@@ -1,13 +1,15 @@
-import ProductData from './ProductData.mjs';
-import { getParam } from './utils.mjs';
-import ProductDetails from './ProductDetails.mjs';
-import { loadHeaderFooter } from './utils.mjs';
+import ProductData from "./ProductData.mjs";
+import { getParam } from "./utils.mjs";
+import ProductDetails from "./ProductDetails.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
-const dataSource = new ProductData('tents');
-const productId = getParam('product');
+const dataSource = new ProductData("tents");
+const productId = getParam("product");
 
 const product = new ProductDetails(productId, dataSource);
 product.init();
+
+console.log("Product details initialized:", product);
 
 loadHeaderFooter();
 
@@ -16,11 +18,16 @@ loadHeaderFooter();
 // const id = e?.target?.dataset?.id;
 // if (!id) return console.warn('Missing data-id on Add to Cart button');
 
-//   const product = await dataSource.findProductById(id);
-//  if (!product) return console.warn('No product found for id:', id);
+// cart.push(item);
+//setLocalStorage("so-cart", cart);
+//}
 
-//   addProductToCart(product);
-// }
+//async function addToCartHandler(e) {
+// console.log("Add to Cart button clicked", e);
+// e?.preventDefault?.();
+// const id = e?.target?.dataset?.id;
+// console.log("Product ID to add to cart:", id);
+// if (!id) return console.warn("Missing data-id on Add to Cart button");
 
 // document
 //  .getElementById('addToCart')

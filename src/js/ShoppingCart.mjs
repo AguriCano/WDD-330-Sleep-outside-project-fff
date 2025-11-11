@@ -1,7 +1,4 @@
-import {
-  renderListWithTemplate
-} from './utils.mjs'
-
+import { renderListWithTemplate } from "./utils.mjs";
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -25,21 +22,15 @@ function cartItemTemplate(item) {
 export default class ProductsBought {
   constructor(dataSource, cartListElement) {
     this.dataSource = dataSource;
-    this.cartListElement = cartListElement 
+    this.cartListElement = cartListElement;
   }
 
   async init() {
-    const cartList = await this.dataSource
-    this.renderCartList(cartList)
+    const cartList = await this.dataSource;
+    this.renderCartList(cartList);
   }
 
-  renderCartList(cartList){
-    renderListWithTemplate(
-      cartItemTemplate,
-      this.cartListElement,
-      cartList
-    );
+  renderCartList(cartList) {
+    renderListWithTemplate(cartItemTemplate, this.cartListElement, cartList);
   }
 }
-
-
