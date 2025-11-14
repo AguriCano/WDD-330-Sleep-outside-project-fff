@@ -1,48 +1,34 @@
-//import { setLocalStorage } from "./utils.mjs";
-import ProductData from './ProductData.mjs';
-import getParam from './utils.mjs';
-import productDetails from './ProductDetails.mjs';
+import ProductData from "./ProductData.mjs";
+import { getParam } from "./utils.mjs";
+import ProductDetails from "./ProductDetails.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
-const dataSource = new ProductData('tents');
-const productId = getParam('product');
+const dataSource = new ProductData("tents");
+const productId = getParam("product");
 
-const product = new productDetails(productId, dataSource);
+const product = new ProductDetails(productId, dataSource);
 product.init();
 
-export function renderListWithTemplate(template, parentElement, list, position  = 'afterbegin', clear = false){
-  const htmlStrings = list.map(template);
-  //if clear is true we need to clear out the contents of the parent.
-  if(clear){
-    parentElement.innerHTML = '';
-  }
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
-}
+console.log("Product details initialized:", product);
 
-/* MOVED TO PRODUCT DETAILS 
+loadHeaderFooter();
 
+//async function addToCartHandler(e) {
+// e?.preventDefault?.();
+// const id = e?.target?.dataset?.id;
+// if (!id) return console.warn('Missing data-id on Add to Cart button');
 
-function addProductToCart(product) {
-  //  setLocalStorage("so-cart", product); this was just overwriting new items added
-  //correct code below to add multiple items
+// cart.push(item);
+//setLocalStorage("so-cart", cart);
+//}
 
-  // Get existing cart or empty array
-  const cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+//async function addToCartHandler(e) {
+// console.log("Add to Cart button clicked", e);
+// e?.preventDefault?.();
+// const id = e?.target?.dataset?.id;
+// console.log("Product ID to add to cart:", id);
+// if (!id) return console.warn("Missing data-id on Add to Cart button");
 
-  // add new item to it
-  cart.push(product);
-
-  // save updated cart
-  localStorage.setItem("so-cart", JSON.stringify(cart));
-}
-// add to cart button event handler
-async function addToCartHandler(e) {
-  const product = await dataSource.findProductById(e.target.dataset.id);
-  addProductToCart(product);
-}
-
-// add listener to Add to Cart button
-document
-  .getElementById("addToCart")
-  .addEventListener("click", addToCartHandler);
-*/
-
+// document
+//  .getElementById('addToCart')
+//  ?.addEventListener('click', addToCartHandler);

@@ -1,5 +1,6 @@
 import { getLocalStorage } from './utils.mjs';
 
+<<<<<<< HEAD
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
@@ -21,8 +22,18 @@ function cartItemTemplate(item) {
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
+=======
+import { loadHeaderFooter } from "./utils.mjs";
 
-  return newItem;
-}
+import ProductsBought from "./ShoppingCart.mjs";
+>>>>>>> main
 
-renderCartContents();
+const dataSource = getLocalStorage("so-cart");
+
+const cartListElement = document.querySelector(".product-list");
+
+const productsCartList = new ProductsBought(dataSource, cartListElement);
+
+productsCartList.init();
+
+loadHeaderFooter();
